@@ -1,0 +1,17 @@
+{
+  "name": "afrolink",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Link-in-bio profiles rendered from a data registry.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "check": "node tools/build.mjs --check",
+    "test": "node --test tests/*.test.mjs",
+    "verify": "npm run check && npm test",
+    "serve": "python3 -m http.server 4173"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

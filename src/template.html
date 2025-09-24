@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="{{LANG}}" data-profile-slug="{{PROFILE_SLUG}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="{{THEME_COLOR}}" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="robots" content="{{ROBOTS}}" />
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="{{TITLE}}" />
+    <meta property="og:description" content="{{DESCRIPTION}}" />
+    <meta property="og:url" content="{{CANONICAL}}" />
+    <meta property="og:image" content="{{SHARE_IMAGE}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{TITLE}}" />
+    <meta name="twitter:description" content="{{DESCRIPTION}}" />
+    <meta name="twitter:image" content="{{SHARE_IMAGE}}" />
+    <link rel="canonical" id="canonical-link" href="{{CANONICAL}}" />
+    <script type="application/ld+json" id="profile-schema">{{SCHEMA}}</script>
+    <title>{{TITLE}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <style id="theme-style">{{THEME_STYLE}}</style>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header class="sticky-header" id="sticky-header">
+      <div class="sticky-inner">
+        <div class="sticky-profile">
+          <img id="sticky-avatar" src="{{AVATAR}}" alt="{{AVATAR_ALT}}" />
+          <span id="sticky-name">{{NAME}}</span>
+        </div>
+        <button class="icon-button" id="share-button" type="button" aria-label="{{SHARE_LABEL}}">
+          <svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="19" r="2.2"/><path d="m8 11 7.8-4.6M8 13l7.8 4.6"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="profile-page" id="profile-page">
+      <section class="hero" id="hero">
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-topline">
+          <span class="brand-mark"><span class="brand-dot"></span>{{SITE_NAME}}</span>
+          <button class="icon-button hero-share" id="hero-share-button" type="button" aria-label="{{SHARE_LABEL}}">
+            <svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="19" r="2.2"/><path d="m8 11 7.8-4.6M8 13l7.8 4.6"/></svg>
+          </button>
+        </div>
+        <div class="hero-content">
+          <div class="avatar-wrap">
+            <img class="profile-avatar" id="profile-avatar" src="{{AVATAR}}" alt="{{AVATAR_ALT}}" />
+            <span class="verified" aria-label="{{VERIFIED_LABEL}}">✦</span>
+          </div>
+          <h1 id="profile-name">{{NAME}}</h1>
+          <p class="handle" id="profile-handle">{{HANDLE}}</p>
+          <div class="social-row" id="social-row" aria-label="{{SOCIAL_LABEL}}">{{SOCIAL}}</div>
+          <button class="scroll-cue" id="scroll-cue" type="button" aria-label="{{SCROLL_CUE_LABEL}}"><span aria-hidden="true"></span></button>
+        </div>
+      </section>
+
+      <section class="link-section" id="link-section" aria-label="{{LINKS_LABEL}}">
+        <p class="eyebrow" id="profile-location"{{LOCATION_HIDDEN}}>{{LOCATION}}</p>
+        <p class="bio" id="profile-bio"{{BIO_HIDDEN}}>{{BIO}}</p>
+        <div class="featured-slot" id="featured-slot">{{FEATURED}}</div>
+        <div class="links-list" id="links-list">{{LINKS}}</div>
+      </section>
+
+      <section class="updates-section" id="updates-section" aria-label="{{UPDATES_LABEL}}">
+        <div class="section-heading">
+          <span class="section-kicker" id="section-kicker">{{SECTION_KICKER}}</span>
+          <span class="section-line"></span>
+        </div>
+        <div class="tabs" id="tabs" role="tablist" aria-label="{{TABS_LABEL}}">
+          <button class="tab is-active" id="tab-notes" type="button" role="tab" aria-selected="true" data-tab="notes">{{TAB_NOTES}}</button>
+          <button class="tab" id="tab-media" type="button" role="tab" aria-selected="false" data-tab="media">{{TAB_MEDIA}}</button>
+        </div>
+        <div class="empty-state" id="empty-state">
+          <div class="empty-orbit" aria-hidden="true"><span>✳</span></div>
+          <h2 id="empty-title">{{EMPTY_TITLE}}</h2>
+          <p id="empty-copy">{{EMPTY_NOTES}}</p>
+        </div>
+      </section>
+
+      <footer class="profile-footer">
+        <p class="footer-brand"><a href="/" aria-label="{{SITE_NAME}}">{{SITE_NAME}}</a></p>
+        <p class="footer-note" id="footer-note">{{FOOTER_NOTE}}</p>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
