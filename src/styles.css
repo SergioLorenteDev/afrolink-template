@@ -203,6 +203,24 @@ h1 {
 .scroll-cue:hover, .scroll-cue:focus-visible { background: rgba(217,255,85,.16); transform: translateY(3px); outline: none; }
 .scroll-cue span { width: 9px; height: 9px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); }
 
+.sticky-header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px 14px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.sticky-header.is-visible { pointer-events: auto; opacity: 1; transform: translateY(0); }
+.sticky-inner { width: min(100%, 690px); display: flex; align-items: center; justify-content: space-between; margin: auto; padding: 8px 10px 8px 8px; background: rgba(26,23,17,.76); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; box-shadow: 0 10px 35px rgba(0,0,0,.25); backdrop-filter: blur(16px); }
+.sticky-profile { display: flex; align-items: center; gap: 10px; min-width: 0; color: #fff; font: 600 13px/1 "Space Grotesk", sans-serif; }
+.sticky-profile img { width: 32px; height: 32px; object-fit: cover; border: 2px solid var(--accent); border-radius: 50%; }
+.sticky-inner .icon-button { width: 34px; height: 34px; background: transparent; border: 0; }
+
 .link-section { padding: 22px 22px 48px; background: #0b1519; }
 .eyebrow { color: var(--accent); font: 600 10px/1 "Space Grotesk", sans-serif; letter-spacing: .18em; text-align: center; }
 .bio { max-width: 520px; margin: 12px auto 20px; color: rgba(255,255,255,.92); font-size: clamp(1.15rem, 3.5vw, 1.38rem); line-height: 1.28; text-align: center; letter-spacing: -.02em; }
@@ -279,6 +297,9 @@ h1 {
 .profile-footer p { margin: 0; font-size: 12px; }
 .profile-footer .footer-brand a { color: var(--accent); font: 700 14px/1 "Space Grotesk", sans-serif; letter-spacing: .02em; }
 .profile-footer .footer-note { margin-top: 8px; color: rgba(255,255,255,.38); font-size: 11px; }
+
+.toast { position: fixed; z-index: 20; right: 18px; bottom: 18px; left: 18px; max-width: 390px; margin: auto; padding: 14px 17px; color: #0b1519; text-align: center; background: var(--accent); border-radius: 13px; box-shadow: 0 14px 35px rgba(0,0,0,.32); opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .25s ease, transform .25s ease; font-size: 13px; font-weight: 700; }
+.toast.is-visible { opacity: 1; transform: translateY(0); }
 
 @media (min-width: 740px) {
   body { padding: 0 24px; background: #100f0c; }
