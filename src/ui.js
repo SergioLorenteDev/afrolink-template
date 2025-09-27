@@ -85,10 +85,15 @@ export function bindInteractions(profile, doc = document) {
     doc.querySelector("#link-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
-  /* The featured card is an <a>, so the gate lives on its click handler. */
-  doc.querySelector("#featured-card")?.addEventListener("click", (event) => {
+  /*
+    Every sensitive card is a <button data-sensitive-url>, never a link, so the
+    only way out is through the dialog.
+  */
+  doc.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-sensitive-url]");
+    if (!trigger) return;
     event.preventDefault();
-    openAgeGate(event.currentTarget.href, doc);
+    openAgeGate(trigger.dataset.sensitiveUrl, doc);
   });
 
   doc.querySelector("#age-close")?.addEventListener("click", () => closeAgeGate(doc));

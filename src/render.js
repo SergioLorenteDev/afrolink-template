@@ -35,8 +35,10 @@ function renderFeatured(featured) {
   const image = escapeHtml(cssUrl(featured.image));
   const label = `${toText(featured.title)}, ${toText(featured.note)}`;
   const badge = '<span class="featured-badge">18+</span>';
-  const tag = "a";
-  const attributes = `href="${escapeHtml(url)}"`;
+  const tag = featured.sensitive ? "button" : "a";
+  const attributes = featured.sensitive
+    ? `type="button" data-sensitive-url="${escapeHtml(url)}"`
+    : `href="${escapeHtml(url)}"`;
   return `
       <${tag} class="featured-card" id="featured-card" ${attributes} style="--featured-image:${image}" aria-label="${escapeHtml(label)}">
         <span class="featured-shade" aria-hidden="true"></span>
