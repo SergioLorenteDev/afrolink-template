@@ -2,6 +2,8 @@
 
 import { uiStrings } from "./i18n.js";
 
+let pendingSensitiveUrl = "";
+
 export function showToast(message, doc = document) {
   const toast = doc.querySelector("#toast");
   if (!toast) return;
@@ -29,6 +31,22 @@ export function shareProfile(profile) {
     return;
   }
   showToast(window.location.href);
+}
+
+export function openAgeGate(url, doc = document) {
+  pendingSensitiveUrl = url;
+  const gate = doc.querySelector("#age-gate");
+  gate.hidden = false;
+  doc.body.classList.add("age-gate-open");
+  const confirm = doc.querySelector("#age-continue");
+  if (confirm) confirm.focus();
+}
+
+export function closeAgeGate(doc = document) {
+  const gate = doc.querySelector("#age-gate");
+  gate.hidden = true;
+  doc.body.classList.remove("age-gate-open");
+  pendingSensitiveUrl = "";
 }
 
 function bindTabs(doc, profile) {
@@ -65,6 +83,23 @@ export function bindInteractions(profile, doc = document) {
   doc.querySelector("#hero-share-button")?.addEventListener("click", share);
   doc.querySelector("#scroll-cue")?.addEventListener("click", () => {
     doc.querySelector("#link-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  /* The featured card is an <a>, so the gate lives on its click handler. */
+  doc.querySelector("#featured-card")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    openAgeGate(event.currentTarget.href, doc);
+  });
+
+  doc.querySelector("#age-close")?.addEventListener("click", () => closeAgeGate(doc));
+  doc.querySelector("#age-cancel")?.addEventListener("click", () => closeAgeGate(doc));
+  doc.querySelectorAll("[data-age-close]").forEach((element) => element.addEventListener("click", () => closeAgeGate(doc)));
+  doc.querySelector("#age-continue")?.addEventListener("click", () => {
+    if (pendingSensitiveUrl) window.location.assign(pendingSensitiveUrl);
+  });
+  doc.addEventListener("keydown", (event) => {
+    const gate = doc.querySelector("#age-gate");
+    if (event.key === "Escape" && gate && !gate.hidden) closeAgeGate(doc);
   });
 
   bindTabs(doc, profile);

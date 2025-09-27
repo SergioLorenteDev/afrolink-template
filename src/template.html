@@ -91,6 +91,21 @@
       </footer>
     </main>
 
+    <div class="age-gate" id="age-gate" hidden>
+      <div class="age-gate-backdrop" data-age-close></div>
+      <section class="age-dialog" role="dialog" aria-modal="true" aria-labelledby="age-title" aria-describedby="age-copy">
+        <button class="age-close" id="age-close" type="button" aria-label="{{AGE_CLOSE_LABEL}}">×</button>
+        <div class="age-mark" aria-hidden="true">18+</div>
+        <p class="eyebrow" id="age-eyebrow">{{AGE_EYEBROW}}</p>
+        <h2 id="age-title">{{AGE_TITLE}}</h2>
+        <p id="age-copy">{{AGE_COPY}}</p>
+        <div class="age-actions">
+          <button class="age-cancel" id="age-cancel" type="button">{{AGE_CANCEL}}</button>
+          <button class="age-continue" id="age-continue" type="button"><span id="age-continue-label">{{AGE_CONTINUE}}</span><span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+    </div>
+
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script type="module" src="/src/app.js"></script>
   </body>
