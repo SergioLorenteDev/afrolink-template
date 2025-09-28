@@ -34,7 +34,7 @@ function renderFeatured(featured) {
   /* cssUrl() emits quotes, so it has to be attribute-escaped before inlining. */
   const image = escapeHtml(cssUrl(featured.image));
   const label = `${toText(featured.title)}, ${toText(featured.note)}`;
-  const badge = '<span class="featured-badge">18+</span>';
+  const badge = featured.sensitive ? '<span class="featured-badge">18+</span>' : "";
   const tag = featured.sensitive ? "button" : "a";
   const attributes = featured.sensitive
     ? `type="button" data-sensitive-url="${escapeHtml(url)}"`
